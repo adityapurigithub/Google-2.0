@@ -10,7 +10,7 @@ const Routez = () => {
         <Route path="/" element={<Navigate to="/search" />} />
 
         {/* below is the way to use multiple routes for rendering a single component */}
-        {["/search", "/images", "/news", "/videos"].map((path) => (
+        {["/search", "/imagesearch", "/news", "/videos"].map((path) => (
           <Route path={path} element={<Results />} /> //mapping on these paths and rendering Route accordingly..
         ))}
       </Routes>

@@ -7,15 +7,16 @@ const baseURL = "https://google-search72.p.rapidapi.com";
 export const ResultContextProvider = ({ children }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState();
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("Spiderman");
 
   //getting the required type of result...
   const getResult = async (type) => {
     setIsLoading(true);
+
     const response = await fetch(`${baseURL}/${type}`, {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "75fc34c334msh75ba7f32839d961p16939cjsne25ed6c8a20d",
+        "X-RapidAPI-Key": "ad5a9b1348msh88f51ed9418a022p1e53edjsn9b81cca61824",
         "X-RapidAPI-Host": "google-search72.p.rapidapi.com",
       },
     });
