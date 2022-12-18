@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 
 const ResultContext = createContext();
 const baseURL = "https://google-search72.p.rapidapi.com";
-
+const newsURL = "https://news-api14.p.rapidapi.com";
 //using context
 export const ResultContextProvider = ({ children }) => {
   const [results, setResults] = useState([]);
@@ -23,12 +23,40 @@ export const ResultContextProvider = ({ children }) => {
 
     const data = await response.json();
     console.log(data);
-    setResults(data);
+    setResults(data.items);
     setIsLoading(false);
   };
+
+  const getNewsResult = async (type) => {
+    setIsLoading(true);
+
+    const response = await fetch(`${newsURL}/${type}`, {
+      method: "GET",
+      headers: {
+        "x-rapidapi-subscription": "ultra",
+        "x-rapidapi-proxy-secret": "c02cea90-4588-11eb-add9-c577b8ecdc8e",
+        "x-rapidapi-user": "suprikurniyanto",
+        "X-RapidAPI-Key": "6f330204f9msh43ae629dd32d2e6p10746ejsn81eee9bc381a",
+        "X-RapidAPI-Host": "news-api14.p.rapidapi.com",
+      },
+    });
+
+    const data = await response.json();
+    console.log(data);
+    setResults(data.articles);
+    setIsLoading(false);
+  };
+
   return (
     <ResultContext.Provider
-      value={{ getResult, results, searchQuery, setSearchQuery, isLoading }}
+      value={{
+        getResult,
+        getNewsResult,
+        results,
+        searchQuery,
+        setSearchQuery,
+        isLoading,
+      }}
     >
       {children}
     </ResultContext.Provider>
