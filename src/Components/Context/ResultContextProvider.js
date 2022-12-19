@@ -7,7 +7,7 @@ const newsURL = "https://news-api14.p.rapidapi.com";
 export const ResultContextProvider = ({ children }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState();
-  const [searchQuery, setSearchQuery] = useState("Spiderman");
+  const [searchQuery, setSearchQuery] = useState("Elon musk");
 
   //getting the required type of result...
   const getResult = async (type) => {
@@ -16,7 +16,7 @@ export const ResultContextProvider = ({ children }) => {
     const response = await fetch(`${baseURL}/${type}`, {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "ad5a9b1348msh88f51ed9418a022p1e53edjsn9b81cca61824",
+        "X-RapidAPI-Key": "c2979d6ea9mshca8863b102f58cep1d9a17jsn9ff4f5c68f6b",
         "X-RapidAPI-Host": "google-search72.p.rapidapi.com",
       },
     });

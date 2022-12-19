@@ -21,7 +21,7 @@ const Results = () => {
       if (location.pathname === "/videos") {
         getResult(`search?query=${searchQuery} videos`);
       } else if (location.pathname === "/news") {
-        getNewsResult(`search?q=${searchQuery}&pageSize=20`);
+        getNewsResult(`search?q=${searchQuery}&pageSize=10`);
       } else {
         getResult(`${location.pathname}?query=${searchQuery}&num=10`);
       }
@@ -39,7 +39,7 @@ const Results = () => {
     case "/search":
       // return "SEARCH";
       return (
-        <div className="flex flex-wrap justify-between space-y-6 space-x-3 sm:px-56 mt-10 p-2">
+        <div className="flex flex-wrap justify-between space-y-6 space-x-3 sm:px-56 mt-10 p-2 min-h-screen">
           {results?.map(({ link, title }, index) => (
             <div key={index} className="md:w-2/5 w-full">
               <a href={link} target="_blank" rel="noreferrer">
@@ -57,7 +57,7 @@ const Results = () => {
     case "/imagesearch":
       // return "IMAGES";
       return (
-        <div className="flex flex-wrap justify-center items-center">
+        <div className="flex flex-wrap justify-center items-center  min-h-screen">
           {results?.map(({ contextLink, thumbnailImageUrl, title }, index) => (
             <a
               className="sm:p-3 p-5"
@@ -85,7 +85,7 @@ const Results = () => {
     case "/news":
       // return "News";
       return (
-        <div className="flex flex-wrap justify-between items-center space-y-6 sm:px-56">
+        <div className="flex flex-wrap justify-between items-center space-y-6 sm:px-56 min-h-screen">
           {results?.map(({ publisher, title, url }, id) => (
             <div key={id} className="md:w-2/5 w-full p-2">
               <a href={url} target="_blank" rel="noreferrer">
@@ -112,7 +112,35 @@ const Results = () => {
         </div>
       );
     case "/videos":
-      return "VIDEOS";
+      // return "VIDEOS";
+      return (
+        <div className="flex flex-wrap flex-col justify-between space-y-6 sm:px-36 min-h-screen">
+          {results?.map(({ title, link, snippet }, index) => (
+            <div key={index} className="p-2 w-">
+              <a href={link} rel="noreferrer">
+                <p className="text-lg text-blue-700 dark:text-blue-200 hover:underline break-word">
+                  {title}
+                </p>
+              </a>
+              <div className="flex gap-2 p-2 ">
+                <ReactPlayer url={link} controls width="250px" height="150px" />
+                <div className="flex flex-col items-between">
+                  <p className="text-lg break-word">
+                    {snippet.length > 80
+                      ? snippet.substring(0, 80) + "..."
+                      : snippet}
+                  </p>
+                  <a href={link} rel="noreferrer">
+                    <p className="text-sm hover:undeline color-blue-400 break-word">
+                      {link}
+                    </p>
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      );
     default:
       return "ERROR";
   }
