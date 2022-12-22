@@ -16,7 +16,7 @@ export const ResultContextProvider = ({ children }) => {
     const response = await fetch(`${baseURL}/${type}`, {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "c2979d6ea9mshca8863b102f58cep1d9a17jsn9ff4f5c68f6b",
+        "X-RapidAPI-Key": "3235425d18msh4e99d2e66fe728cp1bac12jsn11a7779fba34",
         "X-RapidAPI-Host": "google-search72.p.rapidapi.com",
       },
     });
@@ -36,7 +36,7 @@ export const ResultContextProvider = ({ children }) => {
         "x-rapidapi-subscription": "ultra",
         "x-rapidapi-proxy-secret": "c02cea90-4588-11eb-add9-c577b8ecdc8e",
         "x-rapidapi-user": "suprikurniyanto",
-        "X-RapidAPI-Key": "6f330204f9msh43ae629dd32d2e6p10746ejsn81eee9bc381a",
+        "X-RapidAPI-Key": "3235425d18msh4e99d2e66fe728cp1bac12jsn11a7779fba34",
         "X-RapidAPI-Host": "news-api14.p.rapidapi.com",
       },
     });

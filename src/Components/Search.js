@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Links from "./Links";
-import { useDebounce } from "use-debounce"; //used so that
+import { useDebounce } from "use-debounce"; //used in big projects ..
+//we dont want to make a req afer typing every word,instead after some delay like 500ms
 import { useResultContext } from "./Context/ResultContextProvider";
 const Search = () => {
-  const [text, setText] = useState("Elon Musk");
+  const [text, setText] = useState("Elon");
   const { setSearchQuery } = useResultContext();
 
-  const { debouncedValue } = useDebounce(text, 300); //=text, delay
+  const { debouncedValue } = useDebounce(text, 500); //=text, delay
 
   useEffect(() => {
     if (debouncedValue) {
-      setSearchQuery(debouncedValue);
+      setSearchQuery(text);
     }
   }, [debouncedValue]);
 
@@ -23,10 +24,10 @@ const Search = () => {
         placeholder="Search..."
         onChange={(e) => setText(e.target.value)}
       />
-      {!text && (
+      {text && (
         <button
           type="button"
-          className="absolute top-1.5 right-4 text-2xl text-gray-500"
+          className="absolute top-1.6 right-4 text-2xl text-gray-500"
           onClick={() => setText("")}
         >
           X

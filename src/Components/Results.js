@@ -18,11 +18,15 @@ const Results = () => {
     // getResult("search?query=spiderman&num=5");  //for a plain search
     // getResult("imagesearch?query=spiderman&num=2"); // for searching a image..
     if (searchQuery) {
+      console.log("inside useEffect");
       if (location.pathname === "/videos") {
+        console.log(location.pathname);
         getResult(`search?query=${searchQuery} videos`);
       } else if (location.pathname === "/news") {
+        console.log(location.pathname);
         getNewsResult(`search?q=${searchQuery}&pageSize=10`);
       } else {
+        console.log(location.pathname);
         getResult(`${location.pathname}?query=${searchQuery}&num=10`);
       }
     }
@@ -33,6 +37,7 @@ const Results = () => {
   }
 
   console.log(location.pathname);
+  console.log(searchQuery);
   console.log(results);
   // using switch for rendering for diff pathname----
   switch (location.pathname) {
