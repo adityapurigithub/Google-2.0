@@ -17,17 +17,16 @@ const Results = () => {
   useEffect(() => {
     // getResult("search?query=spiderman&num=5");  //for a plain search
     // getResult("imagesearch?query=spiderman&num=2"); // for searching a image..
+    console.log(searchQuery);
     if (searchQuery) {
-      console.log("inside useEffect");
-      if (location.pathname === "/videos") {
-        console.log(location.pathname);
-        getResult(`search?query=${searchQuery} videos`);
-      } else if (location.pathname === "/news") {
-        console.log(location.pathname);
-        getNewsResult(`search?q=${searchQuery}&pageSize=10`);
+      if (location.pathname === "/search") {
+        getResult(`/search?query=${searchQuery}&num=20`);
+      } else if (location.pathname === "/imagesearch") {
+        getResult(`/imagesearch?query==${searchQuery}&num=20`);
+      } else if (location.pathname === "/videos") {
+        getResult(`/search?query=${searchQuery}&num=20 videos`);
       } else {
-        console.log(location.pathname);
-        getResult(`${location.pathname}?query=${searchQuery}&num=10`);
+        getNewsResult(`/search?q=${searchQuery}&pageSize=20`);
       }
     }
   }, [searchQuery, location.pathname]);

@@ -7,16 +7,16 @@ const newsURL = "https://news-api14.p.rapidapi.com";
 export const ResultContextProvider = ({ children }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState();
-  const [searchQuery, setSearchQuery] = useState("Elon musk");
+  const [searchQuery, setSearchQuery] = useState("neeraj puri");
 
   //getting the required type of result...
   const getResult = async (type) => {
     setIsLoading(true);
 
-    const response = await fetch(`${baseURL}/${type}`, {
+    const response = await fetch(`${baseURL}${type}`, {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "3235425d18msh4e99d2e66fe728cp1bac12jsn11a7779fba34",
+        "X-RapidAPI-Key": "568a022369msh2b83b45b703ecb6p1527bfjsn0946fa0f6b07",
         "X-RapidAPI-Host": "google-search72.p.rapidapi.com",
       },
     });
@@ -30,13 +30,13 @@ export const ResultContextProvider = ({ children }) => {
   const getNewsResult = async (type) => {
     setIsLoading(true);
 
-    const response = await fetch(`${newsURL}/${type}`, {
+    const response = await fetch(`${newsURL}${type}`, {
       method: "GET",
       headers: {
         "x-rapidapi-subscription": "ultra",
         "x-rapidapi-proxy-secret": "c02cea90-4588-11eb-add9-c577b8ecdc8e",
         "x-rapidapi-user": "suprikurniyanto",
-        "X-RapidAPI-Key": "3235425d18msh4e99d2e66fe728cp1bac12jsn11a7779fba34",
+        "X-RapidAPI-Key": "568a022369msh2b83b45b703ecb6p1527bfjsn0946fa0f6b07",
         "X-RapidAPI-Host": "news-api14.p.rapidapi.com",
       },
     });
